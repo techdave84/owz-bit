@@ -7,6 +7,7 @@ input.onButtonPressed(Button.A, function () {
     } else {
         UDrolled = umpiredie._pickRandom()
         basic.showString(UDrolled)
+        serial.writeString(UDrolled)
         if (UDrolled == "not out") {
             ball += 1
         } else if (UDrolled == "no ball") {
@@ -19,7 +20,7 @@ input.onButtonPressed(Button.A, function () {
     if (wicket == totalwicket) {
         basic.showString("All out")
         basic.showString("" + (score))
-        serial.writeLine("All out")
+        serial.writeLine("/All out/")
         serial.writeString("" + (score))
     } else if (ball == ballover) {
         over += 1
@@ -27,7 +28,7 @@ input.onButtonPressed(Button.A, function () {
         if (over == totalover) {
             basic.showString("End of Innings")
             basic.showString("" + (score))
-            serial.writeLine("End of innings")
+            serial.writeLine("/End of innings/")
             serial.writeString("" + (score))
         } else {
         	
@@ -35,18 +36,14 @@ input.onButtonPressed(Button.A, function () {
     } else {
     	
     }
-    serial.writeLine(" Ball ")
+    serial.writeLine("/Ball ")
     serial.writeString("" + (ball))
-    serial.writeLine(" --------- ")
-    serial.writeLine("Over")
+    serial.writeLine("/Over ")
     serial.writeString("" + (over))
-    serial.writeLine(" --------- ")
-    serial.writeLine(" Score ")
+    serial.writeLine("/Score ")
     serial.writeString("" + (score))
-    serial.writeLine(" --------- ")
-    serial.writeLine(" Wickets ")
+    serial.writeLine("/Wickets ")
     serial.writeString("" + (wicket))
-    serial.writeLine(" --------- ")
 })
 input.onButtonPressed(Button.B, function () {
     basic.showString("S" + score + "/" + wicket)
